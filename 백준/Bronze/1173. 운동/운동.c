@@ -9,8 +9,6 @@ int main() {
 	// X+T <= M 때 운동 이외 휴식 : X-R
 
 	// 운동하는데 필요한 최소시간 즉, 휴식시간 제외한 실 운동시간.
-
-
 	int X = m, runTime = 0, totalTime=0;
 	if ((X + T) > M) {
 		printf("-1");
