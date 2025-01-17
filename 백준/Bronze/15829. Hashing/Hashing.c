@@ -1,22 +1,24 @@
-// 15829 Hashing / 1.17
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
 
-#define llu unsigned long long
+#define R 31
+#define M 1234567891
 
 int main() {
+    int n;
+    char str[51];
+    scanf("%d", &n);
+    scanf("%s", str);
 
-	int l;
-	scanf("%d", &l);
-	//char s[l] = "";// 배열 크기를 변수로 받으면 초기화가 불가능
-	char s[l]; 
-	scanf("%s", s);
+    unsigned long long hash = 0;
+    unsigned long long power = 1; // r^i 값을 저장
 
-	llu sum = 0;
-	for (int i = 0; i < l; i++) {
-		sum += (s[i] - 'a' + 1) * pow(31, i);
-	}
-	printf("%llu", sum);
+    for (int i = 0; i < n; i++) {
+        int value = str[i] - 'a' + 1;
+        hash = (hash + value * power) % M;
+        power = (power * R) % M; // 여기에서 오버플로우 방지
+    }
 
-	return 0;
+    printf("%llu\n", hash);
+    return 0;
 }
