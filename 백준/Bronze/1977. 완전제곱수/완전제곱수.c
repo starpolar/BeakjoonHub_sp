@@ -8,11 +8,11 @@ int main() {
 	scanf("%d %d", &m, &n);
 
 	int num=1, pow, sum = 0, min = 10001;
-	if (m != 1) num = (int)sqrt(m) + 1;
+	//if (m != 1) num = (int)sqrt(m) + 1;
 	while (1) {
 		pow = num * num;
 		if (n < pow) break;
-		else {
+		else if(m <= pow) {
 			sum += pow;
 			if (min > pow) min = pow;
 		}
