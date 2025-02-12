@@ -7,20 +7,18 @@ int main() {
     int car1_s, car1_e, car2_s, car2_e, car3_s, car3_e;
     scanf("%d %d %d %d %d %d", &car1_s, &car1_e, &car2_s, &car2_e, &car3_s, &car3_e);
 
-    int parking[101] = {0}; // 1~100까지 주차 공간을 체크
-    
-    // 각 차량이 주차하는 구간을 1씩 증가
-    for (int i = car1_s; i < car1_e; i++) parking[i]++;
-    for (int i = car2_s; i < car2_e; i++) parking[i]++;
-    for (int i = car3_s; i < car3_e; i++) parking[i]++;
-
     int sum = 0;
     for (int i = 1; i <= 100; i++) {
-        if (parking[i] == 1) sum += a * 1;
-        else if (parking[i] == 2) sum += b * 2;
-        else if (parking[i] == 3) sum += c * 3;
+        int carSum = 0;
+        if (car1_s <= i && i < car1_e) carSum++;
+        if (car2_s <= i && i < car2_e) carSum++;
+        if (car3_s <= i && i < car3_e) carSum++;
+
+        if (carSum == 1) sum += a;
+        else if (carSum == 2) sum += b * 2;
+        else if (carSum == 3) sum += c * 3;
     }
 
-    printf("%d\n", sum);
+    printf("%d\n", sum);  // 개행 추가
     return 0;
 }
